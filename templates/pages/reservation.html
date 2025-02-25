@@ -1,0 +1,76 @@
+{%extends 'base.html'%}
+{%block content%}
+<nav class ="navbar navbar-expand-lg navbar-dark bg-dark"> 
+    <a class="navbar-brand" href="#"><span style="color: black;">.</span> AlaeCourses</a>
+    <ul class="navbar-nav ms-auto">
+    <li class="nav-itm"><a class="nav-link" href="{% url 'formations'%}">Déconnexion</a></li>
+    <li class="nav-itm"><a class="nav-link"  href="{% url 'panier'%}">Panier</a></li>
+    <li class="nav-itm"><a class="nav-link"  href="{% url 'client'%}">Formations</a></li>
+    </ul>
+    </nav>
+
+    {% load static %}
+
+    <style>
+        /* Style supplémentaire pour l'espace entre les cartes */
+        .card {
+            margin-bottom: 20px;
+        }
+
+        
+        a {
+            text-decoration: none;  /* Supprime le soulignement */
+            color: inherit;         /* Utilise la couleur de texte héritée (souvent la couleur du texte environnant) */
+        }
+        
+        a:hover {
+            text-decoration: underline; /* Ajoute un soulignement lors du survol (facultatif) */
+            color: rgb(0, 0, 0);                 /* Change la couleur lors du survol (facultatif) */
+        }
+    
+    </style>
+   
+
+      <br>
+        
+        <div class="container">
+        <div class="border p-3">
+        <div class="row">
+            <h1>vos achats </h1>
+            {% for reservation in res %}
+            <div  class="col-3 mb-2">
+                
+                <div  class="card" style ="width: 250px; height: 300px;">
+            
+                <div class="card-body  d-flex flex-column ">
+                    <p class="card-title"><strong>Achat numéro {{reservation.id}} </strong> </p>
+                    <p class="card-text">Nombre de formations: {{ reservation.nombre_formations }}</p>
+                    <p class="card-text">Prix total: {{ reservation.prix }}</p>
+                    <h6 class="card-text"> <strong>Formations réservé</strong></h6>
+                    <ul>
+                        {% for formation in reservation.formations_reservees.all %}
+                        <li>{{ formation.nom }}</li>
+                        {% endfor %}
+                    </ul>
+
+                    <div class="card-footer d-flex justify-content-end">
+                        <form action="{% url 'telecharger' %}" method="POST" id="formres">
+                            {% csrf_token %}
+                            <input type="hidden" name="idres" value="{{ reservation.id }}">
+                            <button class="btn btn-danger" type="submit">Télécharger</button>
+                        </form>
+                    </div>
+                    
+
+                </div>
+            </div>
+        
+            </div>
+            
+            {% endfor %}
+            </div>
+            </div>
+        </div>
+
+
+{%endblock content%}

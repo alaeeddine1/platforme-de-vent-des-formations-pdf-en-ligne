@@ -1,0 +1,81 @@
+{%extends 'base.html'%}
+
+
+{%block content%}
+<nav class ="navbar navbar-expand-lg navbar-dark bg-dark"> 
+    <a class="navbar-brand" href="#"><span style="color: black;">.</span> AlaeCourses</a>
+    <ul class="navbar-nav ms-auto">
+    <li class="nav-itm"><a class="nav-link" href="{% url 'formations'%}">Déconnexion</a></li>
+    <li class="nav-itm"><a class="nav-link"  href="{% url 'reservation'%}">vos achats </a></li>
+    <li class="nav-itm"><a class="nav-link"  href="{% url 'client'%}">Formations</a></li>
+    </ul>
+    </nav>
+    {% load static %}
+
+
+<div class="row mb-0" style="height: 320px; background:rgb(71, 69, 69)">
+    <div class="col-7" >
+     <div class="class container m-4">
+          <div class="bg-light p-3 rounded-5">
+          <h1 class="display-3"> Votre panier</h1>
+          <p class="lead">  Sélectionnez les formations souhaitées et cliquez sur "Acheter ce panier" pour procéder au paiement. Chaque panier peut contenir jusqu'à trois formations, Merci de votre compréhension.</p>
+          <hr class="my-4">
+
+        
+         <a href="{% url 'paiment'%}"> <button class="btn btn-dark"type="submit">  Acheter ce panier </button> </a>
+           
+
+          </div>
+     </div >
+    
+    </div>
+
+    <div class="col-4  ">
+       <div class="class container mt-4 ms-5"></div>
+       <img class="ms-5 me-0 rounded-5 " style="width:425px ;height: 295px;"src="{% static 'img/girl.webp' %}" alt="">
+       </div>
+    </div>
+    
+ </div>
+ 
+ <div class="row mb-0" style="height: 120px; background:rgb(71, 69, 69)">
+    <div class="col-12 ">
+       <div class="class container m-3">
+    <p style="color: rgb(255, 255, 255);" Classe="fw-bold"> 
+      Afin de garantir la qualité et la gestion efficace de vos achats, nous limitons le nombre de formations à trois par transaction. Toutes nos formations sont en format PDF, vous permettant de les télécharger et de les consulter facilement à tout moment. Cette règle nous aide à mieux servir chacun de nos clients et à vous fournir un service rapide et efficace. Nous vous remercions de votre compréhension et vous souhaitons une excellente expérience d'apprentissage avec Alae Courses.
+    </p>
+ </div>
+ </div>
+ </div>
+
+<br><br>
+
+<div class="container"></div>
+<div class="border p-3">  
+<div class="row">
+{% for x in formpanier %}
+
+<div  class="col-3 mb-4">
+   <div  class="card" style ="width: 300px; height: 300px;">
+    <img width="150px" src="{{x.image.url}}" class="card-img" alt="" style="height: 150px; object-fit: cover;"> 
+    <div class="card-body  d-flex flex-column ">
+     <h1 class="card-title mb-0 mt-0 custom-title" style="font-size: 1.7rem;"> {{x.nom|truncatechars:10}} <span class="card-price"  style="font-weight: 100; font-size: 1.5rem;">${{ x.prix }}</span></h1>
+    <p class="card-text text-truncate mt-0"> {{x.description}}</p>
+
+
+        <form  action="/pages/panier"   method="POST" id="formres">
+            {% csrf_token %}
+            <input type="hidden" name="nom" value="{{x.nom}}">
+            <input type="hidden" name="fon" value='s'>
+            <button class="btn btn-danger"type="submit">supprimer</button>
+           </form>
+        </div>
+   </div>
+</div>
+
+{% endfor %}
+</div>
+</div>
+</div>
+
+{%endblock content%}

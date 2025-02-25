@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% block content %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#"><span style="color: black;">.</span> AlaeCourses</a>
+    <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="{% url 'formations' %}">Déconnexion</a></li>
+        <li class="nav-item"><a class="nav-link" href="{% url 'panier' %}">Panier</a></li>
+        <li class="nav-item"><a class="nav-link" href="{% url 'client' %}">Formations</a></li>
+    </ul>
+</nav>
+
+{% load static %}
+<style>
+ 
+
+form {
+    width: 65%;
+    background: none;
+    border: 1px solid rgb(52, 52, 52);
+    padding: 20px;
+    border-radius: 20px;
+    margin-left: 100px;
+    backdrop-filter: blur(10px);
+}
+
+
+
+
+
+
+</style>
+<div class="container w-50 mt-5">
+    
+    <form action="/pages/reservation" method="POST" id="formres">
+        {% csrf_token %}
+        <h1 class="text-center mb-4" style="color:rgb(0, 0, 0)" >payment</h1>
+        <div class="mb-4">
+            <label for="cardNumber" class="form-label">Card number</label>
+            <input type="text" class="form-control" id="cardNumber" name="CARD" required>
+        </div>
+        <div class="mb-3">
+            <label for="expirationDate" class="form-label">expiration date</label>
+            <input type="text" class="form-control" id="expirationDate" name="date" required>
+        </div>
+        <div class="mb-3">
+            <label for="cvv" class="form-label">cvv</label>
+            <input type="text" class="form-control" id="cvv" name="cvv" required>
+        </div>
+        <div class="mb-3">
+            <label for="cardHolder" class="form-label">card holder</label>
+            <input type="text" class="form-control" id="cardHolder" name="holder" required>
+        </div>
+        <div class="text-center">
+        <input type="hidden" name="fon" value="r">
+        <button type="submit" class="btn btn-dark">Pay</button>
+        </div>
+    </form>
+</div>
+{% endblock content %}

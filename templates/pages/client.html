@@ -1,0 +1,99 @@
+{%extends 'base.html'%}
+
+
+{%block content%}
+<nav class ="navbar navbar-expand-lg navbar-dark bg-dark"> 
+   <a class="navbar-brand" href="#"><span style="color: black;">.</span> AlaeCourses</a>
+   <ul class="navbar-nav ms-auto">
+   <li class="nav-itm"><a class="nav-link" href="{% url 'formations'%}">Déconnexion</a></li>
+   <li class="nav-itm"><a class="nav-link"  href="{% url 'reservation'%}">vos achats </a></li>
+   <li class="nav-itm"><a class="nav-link"  href="{% url 'panier'%}">Panier</a></li>
+   
+   </ul>
+   </nav>
+   {% load static %}
+
+
+   <style>
+      body{
+         background-color:  rgb(251, 251, 251);
+      }
+   </style>
+  <div class="row mb-0" style="height: 320px; background:rgb(71, 69, 69)">
+      <div class="col-7" >
+       <div class="class container m-4">
+            <div class="bg-light p-3 rounded-5">
+            <h1 class="display-3"> Bienvenue  {{name}}</h1>
+            <p class="lead"> Vous cherchez à donner un coup de boost à votre carrière  ? Ne cherchez plus ! AlaeCourses est votre partenaire idéal pour accéder à des formations de qualité dans divers domaines.</p>
+            <hr class="my-4">
+            <a class="btn btn-primary " href="{% url 'compte'%}">S'inscrire</a>
+            </div>
+       </div >
+      
+      </div>
+
+      <div class="col-4  ">
+         <div class="class container mt-4 ms-5"></div>
+         <img class="ms-5 me-0 rounded-5 " style="width:425px ;height: 295px;"src="{% static 'img/girl.webp' %}" alt="">
+         </div>
+      </div>
+      
+   </div>
+   
+   <div class="row mb-0" style="height: 120px; background:rgb(71, 69, 69)">
+      <div class="col-12 ">
+         <div class="class container m-3">
+      <p style="color: rgb(255, 255, 255);">Bienvenue sur Alae Courses, votre plateforme dédiée à l'excellence éducative. Nous proposons une vaste gamme de formations en format PDF, conçues pour répondre aux besoins des professionnels et des étudiants en quête de connaissances approfondies et actualisées.Chez Alae Courses, nous croyons en l'importance de l'apprentissage continu et de l'accessibilité des ressources pédagogiques. Nos formations couvrent divers domaines tels que la technologie.
+      </p>
+   </div>
+      </div>
+   </div>
+
+
+
+
+
+
+
+
+<br><br>
+   <div class="class border p-3">
+   <h1 class="font-weight-bold">  large sélection de cours</h1>
+   <h6>Choisissez parmi plusieurs formations en ligne. De nouveaux formations sont ajoutés tous les mois</h6>
+   </div>
+
+
+<div class="container"></div>
+<div class="border p-3">
+<div class="row">
+         {% for x in form %}
+
+         <div  class="col-3 mb-4">
+            <div  class="card" style ="width: 300px; height: 300px;">
+               <img width="150px" src="{{x.image.url}}" class="card-img" alt="" style="height: 150px; object-fit: cover;"> 
+               <div class="card-body  d-flex flex-column ">
+                <h1 class="card-title mb-0 mt-0 custom-title" style="font-size: 1.7rem;"> {{x.nom|truncatechars:10}} <span class="card-price"  style="font-weight: 100; font-size: 1.5rem;">${{ x.prix }}</span></h1>
+               <p class="card-text text-truncate mt-0"> {{x.description}}</p>
+
+                 <form  action="/pages/panier"   method="POST" id="formres">
+                  {% csrf_token %}
+                  <input type="hidden" name="nom" value="{{x.nom}}">
+                  <input type="hidden" name="fon" value='a'>
+                  <button class="btn btn-dark"type="submit">ajouter</button>
+                 </form>
+                
+                 </div>
+            </div>
+         </div>
+
+
+        
+        {% endfor %}
+
+        
+</div>
+       
+</div>
+</div>
+
+{%endblock content%}

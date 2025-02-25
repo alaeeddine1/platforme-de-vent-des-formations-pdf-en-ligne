@@ -1,0 +1,90 @@
+{%extends 'base.html'%}
+
+
+{%block content%}
+<nav class ="navbar navbar-expand-lg navbar-dark bg-dark"> 
+    <a class="navbar-brand" href="#"><span style="color: black;">.</span> AlaeCourses</a>
+    <ul class="navbar-nav ms-auto">
+    <li class="nav-itm"><a class="nav-link" href="{% url 'formations'%}">Formations</a></li>
+    </ul>
+    </nav>
+    {% load static %}
+<style>
+   body {
+    background-image: url('/static/img/girl.webp');
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    height: 480px;
+    
+}
+
+form {
+    width: 60%;
+    background: none;
+    border: 1px solid rgba(255, 255, 255);
+    padding: 20px;
+    border-radius: 20px;
+    margin-left: 100px;
+    backdrop-filter: blur(4px);
+}
+
+input.form-control {
+    background: none;
+    border: 1px solid rgb(255, 255, 255);
+    color: rgb(255, 255, 255); 
+    transition: background-color 0.3s;
+}
+
+
+input[type="text"]::placeholder, input[type="password"]::placeholder {
+    color: #ffffff;
+}
+
+
+input.form-control:focus {
+    background: transparent;
+    outline: none; 
+    color: rgb(255, 255, 255); 
+}
+
+input[type="text"] {
+            color: rgb(255, 255, 255); 
+        }
+</style>
+<div class="container w-50 mt-5">
+    
+
+
+   <form method ="GET">
+     {% csrf_token %}
+     <h1 class="text-center " style="color :white"  >AlaeCourses</h1>
+
+    <div class="form-group">
+    <label for="u">   </label>
+    <input class="form-control" type="text" name="userl" placeholder="Nom de utilisateur" id="u">
+    </div>
+
+     
+     <div class="form-group">
+    <label for="p">  </label>
+    <input class="form-control" type="password" name="passwordl" placeholder="Mot de passe" id="p">
+    </div>
+
+     <br>
+     <div class="text-center">
+    <input  class="btn btn-dark   "type="submit" value="se connecter">
+    </div>
+    <div class="text-center">
+    <h8 style="color:red ;">{{msg}}</h8>
+    <div>
+    </form>
+
+     <div class="text-center">
+    <a href="{% url 'compte'%}">  <input  class="btn btn-success"  value="cree un compte ">  </a>
+
+   
+</div>
+
+
+{%endblock content%}
