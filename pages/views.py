@@ -13,15 +13,27 @@ from django.shortcuts import get_object_or_404, render
 def home(request):
     return render(request,'pages/home.html')
 
+
 def client(request):
-    xuser  = request.session.get('users')  
-    data={
-                'name':xuser,
-                'form':formation.objects.all(),
-                }
-            
+    xuser = request.session.get('users')  
+    data = {
+        'name': xuser,
+        'form': formation.objects.all(),
+    }
     
-    return render(request,'pages/client.html',data)
+    if request.method == 'GET':
+        print("Il y a une choix")
+        ch = request.GET.get('choix')
+        
+        if ch is not None:
+            dataa = {
+             'name': xuser,
+             'form': formation.objects.filter(nom=ch),
+             }
+            return render(request, 'pages/client.html', dataa)
+        else:
+            # If no choice is made, render the client page with the data
+            return render(request, 'pages/client.html', data)
      
 
 
@@ -40,10 +52,15 @@ def Compte(request):
             
             new_login = compte_cree(username=username, password=password,nom=nom,prenom=prenom,email=email,ville=ville)
             new_login.save()
+            
+          
             dataa={
-                'name':username,
-                'form':formation.objects.all(),
-                 }
+             'name':username,
+             'form':formation.objects.all(),
+             }
+                          
+                    
+                 
             request.session['users'] = username
             return render(request, 'pages/client.html',dataa)
         else:

@@ -4,6 +4,11 @@
 {%block content%}
 <nav class ="navbar navbar-expand-lg navbar-dark bg-dark"> 
    <a class="navbar-brand" href="#"><span style="color: black;">.</span> AlaeCourses</a>
+   <form method="GET" class="mx-auto d-flex">
+      {% csrf_token %}
+      <input type="text" name="choix" class="form-control" placeholder="Rechercher...">
+      <input class="btn btn-dark ms-2" type="submit" value="Chercher">
+   </form>
    <ul class="navbar-nav ms-auto">
    <li class="nav-itm"><a class="nav-link" href="{% url 'formations'%}">Déconnexion</a></li>
    <li class="nav-itm"><a class="nav-link"  href="{% url 'reservation'%}">vos achats </a></li>
@@ -23,8 +28,8 @@
       <div class="col-7" >
        <div class="class container m-4">
             <div class="bg-light p-3 rounded-5">
-            <h1 class="display-3"> Bienvenue  {{name}}</h1>
-            <p class="lead"> Vous cherchez à donner un coup de boost à votre carrière  ? Ne cherchez plus ! AlaeCourses est votre partenaire idéal pour accéder à des formations de qualité dans divers domaines.</p>
+            <h1 class="display-3"> bienvenue {{name}}</h1>
+            <p class="lead"> Vous cherchez à donner un coup de boost à votre carrière   Ne cherchez plus ! AlaeCourses est votre partenaire idéal pour accéder à des formations de qualité dans divers domaines.</p>
             <hr class="my-4">
             <a class="btn btn-primary " href="{% url 'compte'%}">S'inscrire</a>
             </div>
