@@ -23,36 +23,31 @@
       body{
          background-color:  rgb(251, 251, 251);
       }
+
+      .card {
+       transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+      .card:hover {
+      transform: translateY(-10px); /* Effet de soulèvement au survol */
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15); /* Ombre plus prononcée */
+  }
    </style>
-  <div class="row mb-0" style="height: 320px; background:rgb(71, 69, 69)">
-      <div class="col-7" >
+<div class="row mb-0" style="height: 400px; background-image: url('{% static 'img/fofi.png' %}');">
+      <div class="col-5" >
        <div class="class container m-4">
-            <div class="bg-light p-3 rounded-5">
-            <h1 class="display-3"> bienvenue {{name}}</h1>
-            <p class="lead"> Vous cherchez à donner un coup de boost à votre carrière   Ne cherchez plus ! AlaeCourses est votre partenaire idéal pour accéder à des formations de qualité dans divers domaines.</p>
+            <div class="bg-light p-3 rounded-1">
+            <h1 class="display-3"> Bienvenue {{name}}</h1>
+            <p class="lead"> AlaeCourses est votre partenaire idéal pour accéder à des formations de qualité dans divers domaines.</p>
             <hr class="my-4">
-            <a class="btn btn-primary " href="{% url 'compte'%}">S'inscrire</a>
+          
             </div>
        </div >
       
       </div>
-
-      <div class="col-4  ">
-         <div class="class container mt-4 ms-5"></div>
-         <img class="ms-5 me-0 rounded-5 " style="width:425px ;height: 295px;"src="{% static 'img/girl.webp' %}" alt="">
-         </div>
-      </div>
       
    </div>
    
-   <div class="row mb-0" style="height: 120px; background:rgb(71, 69, 69)">
-      <div class="col-12 ">
-         <div class="class container m-3">
-      <p style="color: rgb(255, 255, 255);">Bienvenue sur Alae Courses, votre plateforme dédiée à l'excellence éducative. Nous proposons une vaste gamme de formations en format PDF, conçues pour répondre aux besoins des professionnels et des étudiants en quête de connaissances approfondies et actualisées.Chez Alae Courses, nous croyons en l'importance de l'apprentissage continu et de l'accessibilité des ressources pédagogiques. Nos formations couvrent divers domaines tels que la technologie.
-      </p>
-   </div>
-      </div>
-   </div>
+   
 
 
 

@@ -25,40 +25,36 @@
               body {
     background-color:rgb(245, 241, 241);
 }
+.card {
+       transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+.card:hover {
+      transform: translateY(-10px); /* Effet de soulèvement au survol */
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15); /* Ombre plus prononcée */
+  }
          </style>
-        <div class="row mb-0" style="height: 320px; background:rgb(71, 69, 69)">
-            <div class="col-7" >
-             <div class="class container m-4">
-                  <div class="bg-light p-3 rounded-5">
-                  <h1 class="display-3"> Rejoignez-nous</h1>
-                  <p class="lead"> Vous cherchez à donner un coup de boost à votre carrière  ? Ne cherchez plus ! AlaeCourses est votre partenaire idéal pour accéder à des formations de qualité dans divers domaines.</p>
-                  <hr class="my-4">
-                  <a class="btn btn-primary " href="{% url 'compte'%}">S'inscrire</a>
-                  </div>
-             </div >
-            
-            </div>
+
+<div class="row mb-0" style="height: 400px; background-image: url('{% static 'img/fofi.png' %}');">
+   <div class="col-5" >
+    <div class="class container m-4">
+         <div class="bg-light p-3 rounded-1">
+         <h1 class="display-3"> Rejoignez-nous</h1>
+         <p class="lead">Vous cherchez à donner un coup de boost à votre carrière  ? Ne cherchez plus ! AlaeCourses est votre partenaire idéal pour accéder à des formations de qualité dans divers domaines. </p>
+         <hr class="my-4">
+         <a class="btn btn-dark ms-2" href="{% url 'compte'%}">S'inscrire</a>
+       
+         </div>
+    </div >
+   
+   </div>
+   
+</div>
+
       
-            <div class="col-4  ">
-               <div class="class container mt-4 ms-5"></div>
-               <img class="ms-5 me-0 rounded-5 " style="width:425px ;height: 295px;"src="{% static 'img/girl.webp' %}" alt="">
-               </div>
-            </div>
-            
-         </div>
          
-         <div class="row mb-0" style="height: 120px; background:rgb(71, 69, 69)">
-            <div class="col-12 ">
-               <div class="class container m-3">
-            <p style="color: rgb(255, 255, 255);" Classe="fw-bold">N'attendez plus ! Rejoignez notre communauté d'apprenants et donnez un nouvel élan à votre avenir. Avec AlaeCourses, chaque formation est une opportunité de progresser et de réussir. Inscrivez-vous dès maintenant et commencez votre aventure d'apprentissage avec nous !
-                Inscription facile et rapide : Cliquez sur le bouton ci-dessous, créez votre compte et découvrez nos offres exclusives !
-            </p>
-         </div>
-            </div>
-         </div>
+         
 
-
-      <br><br>
        
 <div class="class border p-3">
 <h1 class="font-weight-bold">  large sélection de cours</h1>
